@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 const animate = require('tailwindcss-animate')
 
 /** @type {import('tailwindcss').Config} */

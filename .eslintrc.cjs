@@ -34,6 +34,7 @@ module.exports = {
       {
         endOfLine: 'auto'
       }
-    ]
+    ],
+    '@typescript-eslint/no-var-requires': 0
   }
 }
