@@ -15,7 +15,8 @@ export default defineNuxtConfig({
           }
         }
       }
-    ]
+    ],
+    'nuxt-icon'
   ],
   shadcn: {
     prefix: 'Ui',
