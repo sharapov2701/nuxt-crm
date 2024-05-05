@@ -1,4 +1,7 @@
 export default defineNuxtConfig({
+  app: {
+    baseURL: '/nuxt-crm/'
+  },
   devtools: { enabled: false },
   modules: [
     '@nuxt/ui',
