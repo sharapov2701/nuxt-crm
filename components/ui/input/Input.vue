@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib'
 import { useVModel } from '@vueuse/core'
 
 const emits = defineEmits<{
