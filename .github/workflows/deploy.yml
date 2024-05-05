@@ -19,12 +19,12 @@ jobs:
       - name: Build
         run: npx nuxt build --preset github_pages
         env:
-          NUXT_APP_WRITE_ID: ${{ secrets.APP_WRITE_ID }}
-          NUXT_COLLECTION_COMMENTS: ${{ secrets.COLLECTION_COMMENTS }}
-          NUXT_COLLECTION_CUSTOMERS: ${{ secrets.COLLECTION_CUSTOMERS }}
-          NUXT_COLLECTION_DEALS: ${{ secrets.COLLECTION_DEALS }}
-          NUXT_DB_ID: ${{ secrets.DB_ID }}
-          NUXT_STORAGE_ID: ${{ secrets.STORAGE_ID }}
+          NUXT_PUBLIC_APP_WRITE_ID: ${{ secrets.APP_WRITE_ID }}
+          NUXT_PUBLIC_COLLECTION_COMMENTS: ${{ secrets.COLLECTION_COMMENTS }}
+          NUXT_PUBLIC_COLLECTION_CUSTOMERS: ${{ secrets.COLLECTION_CUSTOMERS }}
+          NUXT_PUBLIC_COLLECTION_DEALS: ${{ secrets.COLLECTION_DEALS }}
+          NUXT_PUBLIC_DB_ID: ${{ secrets.DB_ID }}
+          NUXT_PUBLIC_STORAGE_ID: ${{ secrets.STORAGE_ID }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
