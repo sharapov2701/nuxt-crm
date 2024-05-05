@@ -1,9 +1,8 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
+    '@nuxt/ui',
     '@nuxt/image',
-    '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
     [
       '@nuxtjs/google-fonts',
@@ -16,10 +15,20 @@ export default defineNuxtConfig({
         }
       }
     ],
-    'nuxt-icon'
+    'nuxt-icon',
+    '@pinia/nuxt',
+    [
+      '@vee-validate/nuxt',
+      {
+        autoImports: true
+      }
+    ]
   ],
   shadcn: {
     prefix: 'Ui',
     componentDir: './components/ui'
+  },
+  pinia: {
+    storesDirs: ['./store/**']
   }
 })
