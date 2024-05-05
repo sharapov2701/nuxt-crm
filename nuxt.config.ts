@@ -2,6 +2,14 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/nuxt-crm/'
   },
+  runtimeConfig: {
+    appWriteId: '',
+    collectionComments: '',
+    collectionCustomers: '',
+    collectionDeals: '',
+    dbId: '',
+    storageId: ''
+  },
   devtools: { enabled: false },
   modules: [
     '@nuxt/ui',
