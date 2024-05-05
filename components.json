@@ -1,5 +1,4 @@
 {
-  "$schema": "https://shadcn-vue.com/schema.json",
   "style": "new-york",
   "typescript": true,
   "tailwind": {
@@ -11,6 +10,6 @@
   "framework": "nuxt",
   "aliases": {
     "components": "@/components",
-    "utils": "@/lib/utils"
+    "utils": "@/utils"
   }
 }
