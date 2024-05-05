@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { account } from '@/lib/appwrite'
+import { account } from '~/utils/appwrite'
 import { useAuthStore, useIsLoadingStore } from '~/store/auth.store'
 
 const router = useRouter()

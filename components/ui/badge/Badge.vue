@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { cn } from '@/lib'
 import type { VariantProps } from 'class-variance-authority'
+
+import { cn } from '~/utils'
 
 import { badgeVariants } from '.'
 

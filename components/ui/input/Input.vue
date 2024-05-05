@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { cn } from '@/lib'
 import { useVModel } from '@vueuse/core'
+
+import { cn } from '~/utils'
 
 const emits = defineEmits<{
   (e: 'update:modelValue', payload: string | number): void
