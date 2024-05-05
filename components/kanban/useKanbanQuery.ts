@@ -6,9 +6,11 @@ import { KANBAN_DATA } from './kanban.data'
 import type { IColumn } from './kanban.types'
 
 export function useKanbanQuery() {
+  const config = useRuntimeConfig()
+
   return useQuery({
     queryKey: ['deals'],
-    queryFn: () => DB.listDocuments(import.meta.env.DB_ID, import.meta.env.COLLECTION_DEALS),
+    queryFn: () => DB.listDocuments(config.public.dbId, config.public.collectionDeals),
     select(data) {
       const newBoard: IColumn[] = KANBAN_DATA.map(column => ({
         ...column,

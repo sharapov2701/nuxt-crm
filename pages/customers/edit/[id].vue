@@ -14,6 +14,8 @@ useSeoMeta({
   title: `Редактирование компании`
 })
 
+const config = useRuntimeConfig()
+
 const route = useRoute()
 const customerId = route.params.id as string
 
@@ -21,7 +23,7 @@ const { handleSubmit, defineField, setFieldValue, setValues, values } = useForm<
 
 const { data, isSuccess } = useQuery({
   queryKey: ['get customer', customerId],
-  queryFn: () => DB.getDocument(import.meta.env.DB_ID, import.meta.env.COLLECTION_CUSTOMERS, customerId)
+  queryFn: () => DB.getDocument(config.public.dbId, config.public.collectionCustomers, customerId)
 })
 
 watch(isSuccess, () => {
@@ -41,14 +43,14 @@ const [fromSource, fromSourceAttrs] = defineField('from_source')
 const { mutate, isPending } = useMutation({
   mutationKey: ['update customer', customerId],
   mutationFn: (data: ICustomerFormState) =>
-    DB.updateDocument(import.meta.env.DB_ID, import.meta.env.COLLECTION_CUSTOMERS, customerId, data)
+    DB.updateDocument(config.public.dbId, config.public.collectionCustomers, customerId, data)
 })
 
 const { mutate: uploadImage, isPending: isUploadImagePending } = useMutation({
   mutationKey: ['upload image'],
-  mutationFn: (file: File) => storage.createFile(import.meta.env.STORAGE_ID, uuid(), file),
+  mutationFn: (file: File) => storage.createFile(config.public.storageId, uuid(), file),
   onSuccess(data) {
-    const response = storage.getFileDownload(import.meta.env.STORAGE_ID, data.$id)
+    const response = storage.getFileDownload(config.public.storageId, data.$id)
     setFieldValue('avatar_url', response.href)
   }
 })

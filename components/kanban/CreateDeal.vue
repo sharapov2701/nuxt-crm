@@ -23,6 +23,8 @@ const props = defineProps({
   }
 })
 
+const config = useRuntimeConfig()
+
 const { handleSubmit, defineField, handleReset } = useForm<IDealFormState>({
   initialValues: {
     status: props.status
@@ -32,7 +34,7 @@ const { handleSubmit, defineField, handleReset } = useForm<IDealFormState>({
 const { mutate, isPending } = useMutation({
   mutationKey: ['create a new deal'],
   mutationFn: (data: IDealFormState) =>
-    DB.createDocument(import.meta.env.DB_ID, import.meta.env.COLLECTION_DEALS, uuid(), data),
+    DB.createDocument(config.public.dbId, config.public.collectionDeals, uuid(), data),
   onSuccess() {
     props.refetch && props.refetch()
     handleReset()

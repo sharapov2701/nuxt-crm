@@ -7,9 +7,11 @@ useSeoMeta({
   title: 'Customers | CRM System'
 })
 
+const config = useRuntimeConfig()
+
 const { data: customers, isLoading } = useQuery({
   queryKey: ['customers'],
-  queryFn: () => DB.listDocuments(import.meta.env.DB_ID, import.meta.env.COLLECTION_CUSTOMERS)
+  queryFn: () => DB.listDocuments(config.public.dbId, config.public.collectionCustomers)
 })
 </script>
 

@@ -22,10 +22,12 @@ useSeoMeta({
   title: 'Home | CRM System'
 })
 
+const config = useRuntimeConfig()
+
 const { mutate } = useMutation({
   mutationKey: ['move card'],
   mutationFn: ({ docId, status }: TypeMutationVariables) =>
-    DB.updateDocument(import.meta.env.DB_ID, import.meta.env.COLLECTION_DEALS, docId, {
+    DB.updateDocument(config.public.dbId, config.public.collectionDeals, docId, {
       status
     }),
   onSuccess: () => {
