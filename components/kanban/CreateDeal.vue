@@ -4,7 +4,6 @@ import { defineProps } from 'vue'
 import { useMutation } from '@tanstack/vue-query'
 
 import type { IDeal } from '~/types/deals.types'
-import { COLLECTION_DEALS, DB_ID } from '~/app.constants'
 
 interface IDealFormState extends Pick<IDeal, 'name' | 'price'> {
   customer: {
@@ -32,7 +31,8 @@ const { handleSubmit, defineField, handleReset } = useForm<IDealFormState>({
 
 const { mutate, isPending } = useMutation({
   mutationKey: ['create a new deal'],
-  mutationFn: (data: IDealFormState) => DB.createDocument(DB_ID, COLLECTION_DEALS, uuid(), data),
+  mutationFn: (data: IDealFormState) =>
+    DB.createDocument(import.meta.env.DB_ID, import.meta.env.COLLECTION_DEALS, uuid(), data),
   onSuccess() {
     props.refetch && props.refetch()
     handleReset()

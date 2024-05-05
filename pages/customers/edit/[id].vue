@@ -3,7 +3,6 @@ import { v4 as uuid } from 'uuid'
 import { useMutation, useQuery } from '@tanstack/vue-query'
 
 import type { ICustomer } from '~/types/deals.types'
-import { COLLECTION_CUSTOMERS, DB_ID, STORAGE_ID } from '~/app.constants'
 
 interface InputFileEvent extends Event {
   target: HTMLInputElement
@@ -22,7 +21,7 @@ const { handleSubmit, defineField, setFieldValue, setValues, values } = useForm<
 
 const { data, isSuccess } = useQuery({
   queryKey: ['get customer', customerId],
-  queryFn: () => DB.getDocument(DB_ID, COLLECTION_CUSTOMERS, customerId)
+  queryFn: () => DB.getDocument(import.meta.env.DB_ID, import.meta.env.COLLECTION_CUSTOMERS, customerId)
 })
 
 watch(isSuccess, () => {
@@ -41,14 +40,15 @@ const [fromSource, fromSourceAttrs] = defineField('from_source')
 
 const { mutate, isPending } = useMutation({
   mutationKey: ['update customer', customerId],
-  mutationFn: (data: ICustomerFormState) => DB.updateDocument(DB_ID, COLLECTION_CUSTOMERS, customerId, data)
+  mutationFn: (data: ICustomerFormState) =>
+    DB.updateDocument(import.meta.env.DB_ID, import.meta.env.COLLECTION_CUSTOMERS, customerId, data)
 })
 
 const { mutate: uploadImage, isPending: isUploadImagePending } = useMutation({
   mutationKey: ['upload image'],
-  mutationFn: (file: File) => storage.createFile(STORAGE_ID, uuid(), file),
+  mutationFn: (file: File) => storage.createFile(import.meta.env.STORAGE_ID, uuid(), file),
   onSuccess(data) {
-    const response = storage.getFileDownload(STORAGE_ID, data.$id)
+    const response = storage.getFileDownload(import.meta.env.STORAGE_ID, data.$id)
     setFieldValue('avatar_url', response.href)
   }
 })

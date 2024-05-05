@@ -2,7 +2,6 @@
 import { useQuery } from '@tanstack/vue-query'
 
 import type { ICustomer } from '~/types/deals.types'
-import { COLLECTION_CUSTOMERS, DB_ID } from '~/app.constants'
 
 useSeoMeta({
   title: 'Customers | CRM System'
@@ -10,7 +9,7 @@ useSeoMeta({
 
 const { data: customers, isLoading } = useQuery({
   queryKey: ['customers'],
-  queryFn: () => DB.listDocuments(DB_ID, COLLECTION_CUSTOMERS)
+  queryFn: () => DB.listDocuments(import.meta.env.DB_ID, import.meta.env.COLLECTION_CUSTOMERS)
 })
 </script>
 

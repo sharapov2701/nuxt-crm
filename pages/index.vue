@@ -4,7 +4,6 @@ import { useMutation } from '@tanstack/vue-query'
 
 import type { EnumStatus } from '~/types/deals.types'
 import { convertCurrency } from '@/utils/convertCurrency'
-import { COLLECTION_DEALS, DB_ID } from '~/app.constants'
 import { useDealSlideStore } from '~/store/deal-slide.store'
 import { useKanbanQuery } from '@/components/kanban/useKanbanQuery'
 import type { ICard, IColumn } from '~/components/kanban/kanban.types'
@@ -26,7 +25,7 @@ useSeoMeta({
 const { mutate } = useMutation({
   mutationKey: ['move card'],
   mutationFn: ({ docId, status }: TypeMutationVariables) =>
-    DB.updateDocument(DB_ID, COLLECTION_DEALS, docId, {
+    DB.updateDocument(import.meta.env.DB_ID, import.meta.env.COLLECTION_DEALS, docId, {
       status
     }),
   onSuccess: () => {
