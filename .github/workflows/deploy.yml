@@ -22,12 +22,6 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./.output/public
-          NUXT_PUBLIC_APP_WRITE_ID: ${{ secrets.APP_WRITE_ID }}
-          NUXT_PUBLIC_COLLECTION_COMMENTS: ${{ secrets.COLLECTION_COMMENTS }}
-          NUXT_PUBLIC_COLLECTION_CUSTOMERS: ${{ secrets.COLLECTION_CUSTOMERS }}
-          NUXT_PUBLIC_COLLECTION_DEALS: ${{ secrets.COLLECTION_DEALS }}
-          NUXT_PUBLIC_DB_ID: ${{ secrets.DB_ID }}
-          NUXT_PUBLIC_STORAGE_ID: ${{ secrets.STORAGE_ID }}
   # Deployment job
   deploy:
     # Add a dependency to the build job
